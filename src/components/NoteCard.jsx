@@ -12,6 +12,7 @@ const NoteCard = ({ note }) => {
 
   const textAreaRef = useRef(null);
   const cardRef = useRef(null);
+  const keyUpTimer = useRef(null);
 
   const colors = JSON.parse(note?.colors);
   const cardBody = JSON.parse(note?.body);
@@ -24,7 +25,6 @@ const NoteCard = ({ note }) => {
 
   const mouseDown = (e) => {
     setZIndex(cardRef.current);
-
     mouseStartPos.x = e.clientX;
     mouseStartPos.y = e.clientY;
 
@@ -44,6 +44,13 @@ const NoteCard = ({ note }) => {
 
     const newPositions = setNewOffset(cardRef.current, mouseMoveDir);
     setPositions(newPositions);
+
+    const updatedData = notesData?.map((item) =>
+      String(item?.id) === String(cardRef.current?.id)
+        ? { ...item, position: JSON.stringify(newPositions) }
+        : item
+    );
+    setNotesData(updatedData);
   };
 
   const mouseUp = () => {
@@ -60,8 +67,26 @@ const NoteCard = ({ note }) => {
     }, 500);
   };
 
+  const handleKeyUp = (noteId) => {
+    setIsCardLoading(true);
+    if (keyUpTimer.current) {
+      clearTimeout(keyUpTimer.current);
+    }
+
+    keyUpTimer.current = setTimeout(() => {
+      const updatedData = notesData?.map((item) =>
+        item?.id === noteId
+          ? { ...item, body: JSON.stringify(textAreaRef.current.value) }
+          : item
+      );
+      setNotesData(updatedData);
+      setIsCardLoading(false);
+    }, 2000);
+  };
+
   return (
     <div
+      id={note?.id}
       ref={cardRef}
       className="card"
       style={{
@@ -71,7 +96,7 @@ const NoteCard = ({ note }) => {
       }}
     >
       <div
-        onMouseDown={mouseDown}
+        onMouseDown={(e) => mouseDown(e, note?.id)}
         className="card-header"
         style={{ backgroundColor: colors?.colorHeader }}
       >
@@ -86,6 +111,7 @@ const NoteCard = ({ note }) => {
           name={note?.id}
           onFocus={() => setZIndex(cardRef.current)}
           onInput={() => autoGrow(textAreaRef)}
+          onKeyUp={() => handleKeyUp(note?.id)}
           ref={textAreaRef}
           style={{ color: colors?.colorText }}
           defaultValue={cardBody}
