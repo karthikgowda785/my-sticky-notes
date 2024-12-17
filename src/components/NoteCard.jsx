@@ -57,7 +57,7 @@ const NoteCard = ({ note }) => {
       const updatedData = notesData?.filter((notes) => notes?.id !== itemId);
       setNotesData(updatedData);
       setIsCardLoading(false);
-    }, 1000);
+    }, 500);
   };
 
   return (
