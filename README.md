@@ -1,6 +1,4 @@
-# My Sticky Notes
-
-[Live Demo](https://animated-phoenix-6a1c8c.netlify.app/) 
+# My Sticky Notes | [Live Demo](https://animated-phoenix-6a1c8c.netlify.app/) 
 
 ---
 
