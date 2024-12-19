@@ -6,6 +6,7 @@ OR
 
 [Live Demo](https://animated-phoenix-6a1c8c.netlify.app/) 
 
+---
 # My Sticky Notes
 
 A simple and efficient sticky notes application built using **React.js**. This app allows you to create, edit, delete, and organize notes seamlessly. All data is persisted using **localStorage** for a smooth and uninterrupted user experience.  
