@@ -49,4 +49,4 @@ Start the development server with:
    ```bash
     npm start 
    ```
-4. The app will be available at ```bash http://localhost:3000 ```
+4. The app will be available at **```http://localhost:3000 ```**
