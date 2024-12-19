@@ -1,11 +1,5 @@
 # My Sticky Notes
 
-Scan Here 
-
-![qrcode](https://github.com/user-attachments/assets/8a34b1e2-253d-4143-b894-1ec6ee6dd435)
-
-OR 
-
 [Live Demo](https://animated-phoenix-6a1c8c.netlify.app/) 
 
 ---
