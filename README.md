@@ -40,13 +40,13 @@ Follow these steps to run the application locally:
 
 2. **Install Dependencies**:
 Make sure you have Node.js installed, then run:
-```bash
+   ```bash
     npm install  
-```
+   ```
 
 3. **Run the Application:**:
 Start the development server with:
-```bash
+   ```bash
     npm start 
-```
-4. The app will be available at http://localhost:3000
+   ```
+4. The app will be available at ```bash http://localhost:3000 ```
